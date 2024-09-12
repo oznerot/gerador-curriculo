@@ -23,6 +23,12 @@ public interface CurriculoVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitCampo(CurriculoParser.CampoContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link CurriculoParser#tipoCampo}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTipoCampo(CurriculoParser.TipoCampoContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link CurriculoParser#camposLista}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

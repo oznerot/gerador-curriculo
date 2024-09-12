@@ -20,16 +20,9 @@ NAO_RECONHECIDO: .;
 
 curriculo: campo+ camposLista+ EOF;
 
-campo
-	: 'NOME' ':' CADEIA
-	| 'EMAIL' ':' CADEIA
-    | 'CIDADE' ':' CADEIA
-    | 'ESTADO' ':' CADEIA
-    | 'ENDERECO' : CADEIA
-	| 'TELEFONE' ':' CADEIA
-	| 'LINKEDIN' ':' CADEIA
-	| 'GITHUB' ':' CADEIA
-	;
+campo: tipoCampo ':' CADEIA;
+
+tipoCampo: 'NOME' | 'EMAIL' | 'CIDADE' | 'ESTADO' | 'ENDERECO' | 'TELEFONE' | 'LINKEDIN' | 'GITHUB';
 
 camposLista
 	: educacao
@@ -40,23 +33,41 @@ camposLista
 
 educacao: 'EDUCACAO' ':' listaEduc;
 
-listaEduc: itemEduc*;
+listaEduc: campoEduc+;
 
-itemEduc: '-' curso  instituicao periodo descricao;
+campoEduc: '-' itemEduc+
+
+itemEduc
+	: curso
+	| instituicao
+	| periodo
+	| descricao
+	;
 
 curso: 'Curso' ':' CADEIA;
 
 instituicao: 'Instituicao' ':' CADEIA;
 
-periodo: 'Periodo' ':' CADEIA;
+periodo: 'Periodo' ':' '(' dataInicio=mesAno '-' dataFinal=mesAno')';
+
+mesAno: MES '/' ANO;
+
+fragment MES: 'Jan' | 'Fev' | 'Mar' | 'Abr' | 'Mai' | 'Jun' | 'Jul' | 'Ago' | 'Set' | 'Out' | 'Nov' | 'Dez';
+fragment ANO: [0-9]{2};
 
 descricao: 'Descricao' ':' CADEIA; 
 
 experiencia: 'EXPERIENCIA' ':' listaExp;
 
-listaExp: itemExp*;
+listaExp: campoExp*;
 
-itemExp: '-' empresa cargo periodo descricao;
+campoExp: '-' itemExp+
+
+itemExp
+	: empresa
+	| cargo
+	| periodo
+	| descricao;
 
 empresa: 'Empresa' ':' CADEIA;
 

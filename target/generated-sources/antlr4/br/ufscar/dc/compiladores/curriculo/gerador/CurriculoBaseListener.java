@@ -41,6 +41,18 @@ public class CurriculoBaseListener implements CurriculoListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterTipoCampo(CurriculoParser.TipoCampoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTipoCampo(CurriculoParser.TipoCampoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCamposLista(CurriculoParser.CamposListaContext ctx) { }
 	/**
 	 * {@inheritDoc}

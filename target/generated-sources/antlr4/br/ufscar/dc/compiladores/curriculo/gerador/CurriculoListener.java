@@ -28,6 +28,16 @@ public interface CurriculoListener extends ParseTreeListener {
 	 */
 	void exitCampo(CurriculoParser.CampoContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CurriculoParser#tipoCampo}.
+	 * @param ctx the parse tree
+	 */
+	void enterTipoCampo(CurriculoParser.TipoCampoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CurriculoParser#tipoCampo}.
+	 * @param ctx the parse tree
+	 */
+	void exitTipoCampo(CurriculoParser.TipoCampoContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CurriculoParser#camposLista}.
 	 * @param ctx the parse tree
 	 */
