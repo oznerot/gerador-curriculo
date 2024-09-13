@@ -34,6 +34,12 @@ public class Validation extends CurriculoBaseVisitor<Void>
     @Override
     public Void visitCampo(CurriculoParser.CampoContext ctx)
     {
+        
+        if (ctx.CADEIA() == null) {
+            ErrorList.adicionarErroSemantico(ctx.start, "Campo vazio");
+            return null; 
+        }
+
         String tipoCampo = ctx.tipoCampo().getText();
         String valorCampo = ctx.CADEIA().getText();
 

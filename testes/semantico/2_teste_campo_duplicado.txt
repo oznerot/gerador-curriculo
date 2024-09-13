@@ -9,6 +9,7 @@ GITHUB: "mariaoliveira"
 
 EDUCACAO: 
 - Curso: "Engenharia de Computação"
+  Curso: "Engenharia de Computação"
   Instituicao: "Universidade Federal de São Carlos"
   Periodo: (Jan/12 - Dez/16)
   Descricao: "Curso de Engenharia de Computação com ênfase em sistemas embarcados."

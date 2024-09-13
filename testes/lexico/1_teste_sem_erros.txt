@@ -1,5 +1,5 @@
 NOME: "Maria Oliveira"
-EMAIL: "maria.oliveira@example.com"
+EMAIL: "ana.oliveira@example.com"
 CIDADE: "São Paulo"
 ESTADO: "SP"
 ENDERECO: "Avenida das Americas, 456"
@@ -8,7 +8,7 @@ LINKEDIN: "mariaoliveira"
 GITHUB: "mariaoliveira"
 
 EDUCACAO: 
-- Curso: "Engenharia de Computação"
+- Curso: "Ciencia de Computação"
   Instituicao: "Universidade Federal de São Carlos"
   Periodo: (Jan/12 - Dez/16)
   Descricao: "Curso de Engenharia de Computação com ênfase em sistemas embarcados."
