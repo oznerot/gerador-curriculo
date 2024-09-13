@@ -15,4 +15,4 @@ Cada campo possui seus subcampos, sendo os de Educação: Curso, Instituto, Peri
 
 ## Rodar
 
-``` java -jar ~/Projects/Java/Compiladores/curriculo-gerador/target/curriculo-gerador-1.0-SNAPSHOT-jar-with-dependencies.jar [PATH_ENTRADA] [PATH_SAIDA_HTML]```
+``` java -jar [PATH_PROJETO]/curriculo-gerador/target/curriculo-gerador-1.0-SNAPSHOT-jar-with-dependencies.jar [PATH_ENTRADA] [PATH_SAIDA_HTML]```
