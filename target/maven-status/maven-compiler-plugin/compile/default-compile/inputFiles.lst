@@ -1,3 +1,4 @@
+/home/vitorenzo/Projects/Java/Compiladores/curriculo-gerador/src/main/java/br/ufscar/dc/compiladores/curriculo/gerador/util/ErrorList.java
 /home/vitorenzo/Projects/Java/Compiladores/curriculo-gerador/target/generated-sources/antlr4/br/ufscar/dc/compiladores/curriculo/gerador/CurriculoListener.java
 /home/vitorenzo/Projects/Java/Compiladores/curriculo-gerador/target/generated-sources/antlr4/br/ufscar/dc/compiladores/curriculo/gerador/CurriculoBaseListener.java
 /home/vitorenzo/Projects/Java/Compiladores/curriculo-gerador/src/main/java/br/ufscar/dc/compiladores/curriculo/gerador/util/Validator.java
@@ -9,5 +10,6 @@
 /home/vitorenzo/Projects/Java/Compiladores/curriculo-gerador/src/main/java/br/ufscar/dc/compiladores/curriculo/gerador/tabela/TabelaDeSimbolos.java
 /home/vitorenzo/Projects/Java/Compiladores/curriculo-gerador/target/generated-sources/antlr4/br/ufscar/dc/compiladores/curriculo/gerador/CurriculoLexer.java
 /home/vitorenzo/Projects/Java/Compiladores/curriculo-gerador/src/main/java/br/ufscar/dc/compiladores/curriculo/gerador/tabela/EntradaTabelaDeSimbolos.java
+/home/vitorenzo/Projects/Java/Compiladores/curriculo-gerador/src/main/java/br/ufscar/dc/compiladores/curriculo/gerador/visitor/GeradorHTML.java
 /home/vitorenzo/Projects/Java/Compiladores/curriculo-gerador/src/main/java/br/ufscar/dc/compiladores/curriculo/gerador/tabela/Escopos.java
 /home/vitorenzo/Projects/Java/Compiladores/curriculo-gerador/target/generated-sources/antlr4/br/ufscar/dc/compiladores/curriculo/gerador/CurriculoBaseVisitor.java

@@ -20,7 +20,8 @@ public class CurriculoParser extends Parser {
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
 		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, PALAVRA_CHAVE=23, CADEIA=24, 
-		MESANO=25, IGNORADO=26, ERRO_CADEIA=27, ERRO_COMENTARIO=28, NAO_RECONHECIDO=29;
+		MESANO=25, IGNORADO=26, COMENTARIO=27, ERRO_CADEIA=28, ERRO_COMENTARIO=29, 
+		NAO_RECONHECIDO=30;
 	public static final int
 		RULE_curriculo = 0, RULE_campo = 1, RULE_tipoCampo = 2, RULE_camposLista = 3, 
 		RULE_educacao = 4, RULE_listaEduc = 5, RULE_campoEduc = 6, RULE_itemEduc = 7, 
@@ -53,7 +54,8 @@ public class CurriculoParser extends Parser {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
 			null, null, null, null, null, null, null, null, null, null, null, "PALAVRA_CHAVE", 
-			"CADEIA", "MESANO", "IGNORADO", "ERRO_CADEIA", "ERRO_COMENTARIO", "NAO_RECONHECIDO"
+			"CADEIA", "MESANO", "IGNORADO", "COMENTARIO", "ERRO_CADEIA", "ERRO_COMENTARIO", 
+			"NAO_RECONHECIDO"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -1536,7 +1538,7 @@ public class CurriculoParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u001d\u00ab\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
+		"\u0004\u0001\u001e\u00ab\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
 		"\u0002\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004"+
 		"\u0002\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0002\u0007\u0007\u0007"+
 		"\u0002\b\u0007\b\u0002\t\u0007\t\u0002\n\u0007\n\u0002\u000b\u0007\u000b"+

@@ -6,6 +6,7 @@ import br.ufscar.dc.compiladores.curriculo.gerador.tabela.Escopos;
 import br.ufscar.dc.compiladores.curriculo.gerador.tabela.EntradaTabelaDeSimbolos;
 import br.ufscar.dc.compiladores.curriculo.gerador.tabela.TabelaDeSimbolos;
 import br.ufscar.dc.compiladores.curriculo.gerador.util.Validator;
+import br.ufscar.dc.compiladores.curriculo.gerador.util.ErrorList;
 
 import br.ufscar.dc.compiladores.curriculo.gerador.CurriculoParser;
 import br.ufscar.dc.compiladores.curriculo.gerador.CurriculoBaseVisitor;
@@ -46,40 +47,40 @@ public class Validation extends CurriculoBaseVisitor<Void>
 
         if(tipoCampo.equals("NOME") && !Validator.isValidNome(valorCampo))
         {
-            throw new RuntimeException("Erro semântico: Nome " + valorCampo + " não é válido.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Nome " + valorCampo + " não é válido.");
         }
         else if(tipoCampo.equals("EMAIL") && !Validator.isValidEmail(valorCampo))
         {
-            throw new RuntimeException("Erro semântico: Email " + valorCampo + " não é válido.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Email " + valorCampo + " não é válido.");
         }
         else if(tipoCampo.equals("CIDADE") && !Validator.isValidCidade(valorCampo))
         {
-            throw new RuntimeException("Erro semântico: Cidade " + valorCampo + " não é válida.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Cidade " + valorCampo + " não é válida.");
         }
         else if(tipoCampo.equals("ESTADO") && !Validator.isValidEstado(valorCampo))
         {
-            throw new RuntimeException("Erro semântico: Estado " + valorCampo + " não é válido.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Nome " + valorCampo + " não é válido.");
         }
         else if(tipoCampo.equals("ENDERECO") && !Validator.isValidEndereco(valorCampo))
         {
-            throw new RuntimeException("Erro semântico: Endereço " + valorCampo + " não é válido.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Endereço " + valorCampo + " não é válido.");
         }
         else if(tipoCampo.equals("TELEFONE") && !Validator.isValidTelefone(valorCampo))
         {
-            throw new RuntimeException("Erro semântico: Telefone " + valorCampo + " não é válido.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Telefone " + valorCampo + " não é válido.");
         }
         else if(tipoCampo.equals("LINKEDIN") && !Validator.isValidLinkedin(valorCampo))
         {
-            throw new RuntimeException("Erro semântico: Linkedin " + valorCampo + " não é válido.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Linkedin " + valorCampo + " não é válido.");
         }
         else if(tipoCampo.equals("GITHUB") && !Validator.isValidGithub(valorCampo))
         {
-            throw new RuntimeException("Erro semântico: Github " + valorCampo + " não é válido.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Github " + valorCampo + " não é válido.");
         }
 
         if(entrada != null)
         {
-            throw new RuntimeException("Erro semântico: Campo " + tipoCampo + " já foi declarado.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Campo " + tipoCampo + " já foi declarado.");
         }
         else
         {
@@ -94,18 +95,26 @@ public class Validation extends CurriculoBaseVisitor<Void>
     {
         if(ctx.educacao() != null)
         {
+            String campo = ctx.educacao().getStart().getText();
+            verificaCampo(ctx, campo);
             visitEducacao(ctx.educacao());
         }
         else if(ctx.experiencia() != null)
         {
+            String campo = ctx.experiencia().getStart().getText();
+            verificaCampo(ctx, campo);
             visitExperiencia(ctx.experiencia());
         }
         else if(ctx.habilidades() != null)
         {
+            String campo = ctx.habilidades().getStart().getText();
+            verificaCampo(ctx, campo);
             visitHabilidades(ctx.habilidades());
         }
         else if(ctx.idiomas() != null)
         {
+            String campo = ctx.idiomas().getStart().getText();
+            verificaCampo(ctx, campo);
             visitIdiomas(ctx.idiomas());
         }
 
@@ -181,7 +190,7 @@ public class Validation extends CurriculoBaseVisitor<Void>
 
         if(entrada != null)
         {
-            throw new RuntimeException("Erro semântico: Curso já foi informado.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Variável Curso já declarada.");
         }
         else
         {
@@ -206,7 +215,7 @@ public class Validation extends CurriculoBaseVisitor<Void>
 
         if(entrada != null)
         {
-            throw new RuntimeException("Erro semântico: Instituicao já foi informada.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Variável Instituicao já declarada.");
         }
         else
         {
@@ -231,7 +240,7 @@ public class Validation extends CurriculoBaseVisitor<Void>
 
         if(entrada != null)
         {
-            throw new RuntimeException("Erro semântico: Descricao já foi informada.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Variável Descricao já declarada.");
         }
         else
         {
@@ -249,7 +258,7 @@ public class Validation extends CurriculoBaseVisitor<Void>
 
         if(!Validator.isValidPeriodo(dataInicio, dataFinal))
         {
-            throw new RuntimeException("Erro semântico: Período de " + dataInicio + " a " + dataFinal + " não é válido.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Período de " + dataInicio + " a " + dataFinal + " não é válido.");
         }
 
         TabelaDeSimbolos escopoAtual = escopos.obterEscopoAtual();
@@ -257,7 +266,7 @@ public class Validation extends CurriculoBaseVisitor<Void>
 
         if(entrada != null)
         {
-            throw new RuntimeException("Erro semântico: Período já foi informado.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Variável Periodo já declarado.");
         }
         else
         {
@@ -338,7 +347,7 @@ public class Validation extends CurriculoBaseVisitor<Void>
 
         if(entrada != null)
         {
-            throw new RuntimeException("Erro semântico: Empresa já foi informada.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Variável Empresa já declarada.");
         }
         else
         {
@@ -363,7 +372,7 @@ public class Validation extends CurriculoBaseVisitor<Void>
 
         if(entrada != null)
         {
-            throw new RuntimeException("Erro semântico: Cargo já foi informado.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Variável Cargo já declarada.");
         }
         else
         {
@@ -409,7 +418,7 @@ public class Validation extends CurriculoBaseVisitor<Void>
 
         if(entrada != null)
         {
-            throw new RuntimeException("Erro semântico: Habilidade \"" + valorItem + "\" já foi informada.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Habilidade \"" + valorItem + "\" já foi declarada.");
         }
         else
         {
@@ -455,7 +464,7 @@ public class Validation extends CurriculoBaseVisitor<Void>
 
         if(entrada != null)
         {
-            throw new RuntimeException("Erro semântico: Idioma \"" + valorItem + "\" já foi informado.");
+            ErrorList.adicionarErroSemantico(ctx.start, "Idioma \"" + valorItem + "\" já foi declarada.");
         }
         else
         {
@@ -463,5 +472,21 @@ public class Validation extends CurriculoBaseVisitor<Void>
         }
 
         return null; 
+    }
+
+    //HELPER FUNCTIONS
+
+    public void verificaCampo(CurriculoParser.CamposListaContext ctx, String campo)
+    {
+        TabelaDeSimbolos escopoAtual = escopos.obterEscopoAtual();
+        
+        if(escopoAtual.verificar(campo) != null)
+        {
+            ErrorList.adicionarErroSemantico(ctx.start, "Campo " + campo + " já foi declarado.");
+        }
+        else
+        {
+            escopoAtual.inserir(campo, campo);
+        }
     }
 }

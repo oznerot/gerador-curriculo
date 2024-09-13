@@ -16,7 +16,7 @@ IGNORADO: (WS | TAB | QUEBRA_LINHA | COMENTARIO) -> skip;
 fragment WS: ' ';
 fragment TAB: '\t';
 fragment QUEBRA_LINHA: '\n';
-fragment COMENTARIO: '{ ' ~('\n'|'}')* '}';
+COMENTARIO: '{' ~('\n'|'}')* '}';
 
 //Tokens de Erros
 ERRO_CADEIA: '"' ~('\n'|'"')* '\n';
