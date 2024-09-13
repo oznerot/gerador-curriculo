@@ -11,7 +11,7 @@ Cada campo possui seus subcampos, sendo os de Educação: Curso, Instituto, Peri
 
 ## Compilar 
 
-``` mvn package ```
+``` mvn clean compile ``` ``` mvn generate-sources ``` ``` mvn package ```
 
 ## Rodar
 
