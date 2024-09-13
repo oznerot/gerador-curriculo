@@ -89,6 +89,18 @@ public class CurriculoBaseListener implements CurriculoListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterCampoEduc(CurriculoParser.CampoEducContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCampoEduc(CurriculoParser.CampoEducContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterItemEduc(CurriculoParser.ItemEducContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -149,6 +161,18 @@ public class CurriculoBaseListener implements CurriculoListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterTimestamp(CurriculoParser.TimestampContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTimestamp(CurriculoParser.TimestampContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterExperiencia(CurriculoParser.ExperienciaContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -168,6 +192,18 @@ public class CurriculoBaseListener implements CurriculoListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitListaExp(CurriculoParser.ListaExpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCampoExp(CurriculoParser.CampoExpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCampoExp(CurriculoParser.CampoExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -233,13 +269,13 @@ public class CurriculoBaseListener implements CurriculoListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterItemHab(CurriculoParser.ItemHabContext ctx) { }
+	@Override public void enterCampoHab(CurriculoParser.CampoHabContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitItemHab(CurriculoParser.ItemHabContext ctx) { }
+	@Override public void exitCampoHab(CurriculoParser.CampoHabContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -269,13 +305,13 @@ public class CurriculoBaseListener implements CurriculoListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterItemIdioma(CurriculoParser.ItemIdiomaContext ctx) { }
+	@Override public void enterCampoIdioma(CurriculoParser.CampoIdiomaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitItemIdioma(CurriculoParser.ItemIdiomaContext ctx) { }
+	@Override public void exitCampoIdioma(CurriculoParser.CampoIdiomaContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

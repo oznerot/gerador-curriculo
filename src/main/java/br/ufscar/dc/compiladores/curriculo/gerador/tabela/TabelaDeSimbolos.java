@@ -1,6 +1,6 @@
 package br.ufscar.dc.compiladores.curriculo.gerador.tabela;
 
-java.util.HashMap;
+import java.util.HashMap;
 
 public class TabelaDeSimbolos
 {

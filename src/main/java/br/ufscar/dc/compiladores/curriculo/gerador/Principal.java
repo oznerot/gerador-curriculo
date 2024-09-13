@@ -12,6 +12,8 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Token;
 
 import br.ufscar.dc.compiladores.curriculo.gerador.listener.ErrorListener;
+import br.ufscar.dc.compiladores.curriculo.gerador.visitor.Validation;
+import br.ufscar.dc.compiladores.curriculo.gerador.CurriculoParser.CurriculoContext;
 
 public class Principal
 {
@@ -29,7 +31,11 @@ public class Principal
 
         parser.addErrorListener(errLis);
 
-        parser.curriculo();
+        CurriculoContext arvore = parser.curriculo();
+
+        Validation validator = new Validation();
+
+        validator.visitCurriculo(arvore);
 
         System.out.println("Fim da compilacao");       
     }

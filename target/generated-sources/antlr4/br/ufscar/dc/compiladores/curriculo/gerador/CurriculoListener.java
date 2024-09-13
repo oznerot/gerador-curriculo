@@ -68,6 +68,16 @@ public interface CurriculoListener extends ParseTreeListener {
 	 */
 	void exitListaEduc(CurriculoParser.ListaEducContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CurriculoParser#campoEduc}.
+	 * @param ctx the parse tree
+	 */
+	void enterCampoEduc(CurriculoParser.CampoEducContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CurriculoParser#campoEduc}.
+	 * @param ctx the parse tree
+	 */
+	void exitCampoEduc(CurriculoParser.CampoEducContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CurriculoParser#itemEduc}.
 	 * @param ctx the parse tree
 	 */
@@ -118,6 +128,16 @@ public interface CurriculoListener extends ParseTreeListener {
 	 */
 	void exitDescricao(CurriculoParser.DescricaoContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CurriculoParser#timestamp}.
+	 * @param ctx the parse tree
+	 */
+	void enterTimestamp(CurriculoParser.TimestampContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CurriculoParser#timestamp}.
+	 * @param ctx the parse tree
+	 */
+	void exitTimestamp(CurriculoParser.TimestampContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CurriculoParser#experiencia}.
 	 * @param ctx the parse tree
 	 */
@@ -137,6 +157,16 @@ public interface CurriculoListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitListaExp(CurriculoParser.ListaExpContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CurriculoParser#campoExp}.
+	 * @param ctx the parse tree
+	 */
+	void enterCampoExp(CurriculoParser.CampoExpContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CurriculoParser#campoExp}.
+	 * @param ctx the parse tree
+	 */
+	void exitCampoExp(CurriculoParser.CampoExpContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CurriculoParser#itemExp}.
 	 * @param ctx the parse tree
@@ -188,15 +218,15 @@ public interface CurriculoListener extends ParseTreeListener {
 	 */
 	void exitListaHab(CurriculoParser.ListaHabContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CurriculoParser#itemHab}.
+	 * Enter a parse tree produced by {@link CurriculoParser#campoHab}.
 	 * @param ctx the parse tree
 	 */
-	void enterItemHab(CurriculoParser.ItemHabContext ctx);
+	void enterCampoHab(CurriculoParser.CampoHabContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CurriculoParser#itemHab}.
+	 * Exit a parse tree produced by {@link CurriculoParser#campoHab}.
 	 * @param ctx the parse tree
 	 */
-	void exitItemHab(CurriculoParser.ItemHabContext ctx);
+	void exitCampoHab(CurriculoParser.CampoHabContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CurriculoParser#idiomas}.
 	 * @param ctx the parse tree
@@ -218,13 +248,13 @@ public interface CurriculoListener extends ParseTreeListener {
 	 */
 	void exitListaIdiomas(CurriculoParser.ListaIdiomasContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CurriculoParser#itemIdioma}.
+	 * Enter a parse tree produced by {@link CurriculoParser#campoIdioma}.
 	 * @param ctx the parse tree
 	 */
-	void enterItemIdioma(CurriculoParser.ItemIdiomaContext ctx);
+	void enterCampoIdioma(CurriculoParser.CampoIdiomaContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CurriculoParser#itemIdioma}.
+	 * Exit a parse tree produced by {@link CurriculoParser#campoIdioma}.
 	 * @param ctx the parse tree
 	 */
-	void exitItemIdioma(CurriculoParser.ItemIdiomaContext ctx);
+	void exitCampoIdioma(CurriculoParser.CampoIdiomaContext ctx);
 }

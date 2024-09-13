@@ -1,36 +1,29 @@
 NOME: "João da Silva"
 EMAIL: "joao.silva@example.com"
-TELEFONE: "(11) 1234-5678"
-LINKEDIN: "linkedin.com/in/joaosilva"
-GITHUB: "github.com/joaosilva"
+CIDADE: "São Paulo"
+ESTADO: "SP"
+ENDERECO: "Rua das Flores, 123"
+TELEFONE: "(11) 98765-4321"
+LINKEDIN: "joaosilva"
+GITHUB: "joaosilva"
 
-EDUCACAO:
-- Curso: "Engenharia de Software"
-  Instituicao: "Universidade Federal de São Carlos
-  Periodo: "2018 - 2023"
-  Descricao: "Formação em Engenharia de Software com ênfase em desenvolvimento web e otimização de sistemas."
-
-- Curso: "Curso de Java Avançado"
-  Instituicao: "Alura"
-  Periodo: "2022"
-  Descricao: "Curso avançado de Java focado em desenvolvimento de aplicações corporativas."
+EDUCACAO: 
+- Curso: "Engenharia de Computação"
+  Instituicao: "Universidade Federal de São Carlos"
+  Periodo: (Jan/15 - Dez/19)
+  Descricao: "Curso de Engenharia de Computação com ênfase em sistemas embarcados."
 
 EXPERIENCIA:
-- Empresa: "Tech Solutions"
+- Empresa: "Tech Solutions Ltda"
   Cargo: "Desenvolvedor de Software"
-  Periodo: "2023 - Presente"
-  Descricao: "Desenvolvimento de sistemas para gestão de processos internos e integração com APIs externas."
-
-- Empresa: "StartUp XYZ"
-  Cargo: "Estagiário de Desenvolvimento"
-  Periodo: "2022 - 2023"
-  Descricao: "Participação no desenvolvimento de aplicações mobile e web."
+  Periodo: (Jan/20 - Dez/22)
+  Descricao: "Desenvolvimento de software para sistemas corporativos."
 
 HABILIDADES:
-- "Programação em Java"
-- "Desenvolvimento Web com React"
-- "SQL e Banco de Dados Relacional"
+- "Java"
+- "Python"
+- "SQL"
 
 IDIOMAS:
-- "Inglês: Avançado"
-- "Espanhol: Intermediário"
+- "Português"
+- "Inglês"

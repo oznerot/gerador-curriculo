@@ -1,4 +1,4 @@
-package br.ufscar.dc.compiladores.curriculo.gerador;
+package br.ufscar.dc.compiladores.curriculo.gerador.listener;
 
 import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.Parser;
@@ -7,6 +7,8 @@ import org.antlr.v4.runtime.Recognizer;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.atn.ATNConfigSet;
 import org.antlr.v4.runtime.dfa.DFA;
+
+import br.ufscar.dc.compiladores.curriculo.gerador.CurriculoLexer;
 
 public class ErrorListener extends BaseErrorListener
 {

@@ -3,9 +3,14 @@ package br.ufscar.dc.compiladores.curriculo.gerador.visitor;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 import br.ufscar.dc.compiladores.curriculo.gerador.tabela.Escopos;
+import br.ufscar.dc.compiladores.curriculo.gerador.tabela.EntradaTabelaDeSimbolos;
+import br.ufscar.dc.compiladores.curriculo.gerador.tabela.TabelaDeSimbolos;
 import br.ufscar.dc.compiladores.curriculo.gerador.util.Validator;
 
-public class ValidationVisitor extends CurriculoBaseVisitor<Void>
+import br.ufscar.dc.compiladores.curriculo.gerador.CurriculoParser;
+import br.ufscar.dc.compiladores.curriculo.gerador.CurriculoBaseVisitor;
+
+public class Validation extends CurriculoBaseVisitor<Void>
 {
     Escopos escopos = new Escopos();
 
@@ -118,10 +123,10 @@ public class ValidationVisitor extends CurriculoBaseVisitor<Void>
     @Override
     public Void visitListaEduc(CurriculoParser.ListaEducContext ctx)
     {
-        for(CurriculoParser.ItemEducContext itemEducContext : ctx.itemEduc())
+        for(CurriculoParser.CampoEducContext campoEducContext : ctx.campoEduc())
         {
             escopos.criarNovoEscopo();
-            visitItemEduc(itemEducContext);
+            visitCampoEduc(campoEducContext);
             escopos.abandonarEscopo();
         }
 
@@ -129,26 +134,334 @@ public class ValidationVisitor extends CurriculoBaseVisitor<Void>
     }
 
     @Override
+    public Void visitCampoEduc(CurriculoParser.CampoEducContext ctx)
+    {
+        for(CurriculoParser.ItemEducContext itemEducContext : ctx.itemEduc())
+        {
+            visitItemEduc(itemEducContext);
+        }
+
+        return null;
+    }
+
     public Void visitItemEduc(CurriculoParser.ItemEducContext ctx)
     {
-        String curso = ctx.curso().CADEIA().getText();
-        String instituicao = ctx.instituicao().CADEIA().getText();
-        String periodo = ctx.periodo().CADEIA().getText();
-        String descricao = ctx.descricao().CADEIA().getText();
+        if(ctx.curso() != null)
+        {
+            visitCurso(ctx.curso());
+        }
+        else if(ctx.instituicao() != null)
+        {
+            visitInstituicao(ctx.instituicao());
+        }
+        else if(ctx.periodo() != null)
+        {
+            visitPeriodo(ctx.periodo());
+        }
+        else if(ctx.descricao() != null)
+        {
+            visitDescricao(ctx.descricao());
+        }
 
-        visitPeriodo(ctx.periodo());
-
+        return null;
     }
 
     @Override
-    public void visitPeriodo(CurriculoParser.PeriodoContext ctx)
+    public Void visitCurso(CurriculoParser.CursoContext ctx)
     {
-        String dataInicio = ctx.dataInicio.getText();
-        String dataFinal = ctx.dataFinal.getText();
+        String valorItem = ctx.CADEIA().getText();
+
+        if(valorItem.startsWith("\"") && valorItem.endsWith("\""))
+        {
+            valorItem = valorItem.substring(1, valorItem.length() - 1);
+        }
+
+        TabelaDeSimbolos escopoAtual = escopos.obterEscopoAtual();
+        EntradaTabelaDeSimbolos entrada = escopoAtual.verificar("Curso");
+
+        if(entrada != null)
+        {
+            throw new RuntimeException("Erro semântico: Curso já foi informado.");
+        }
+        else
+        {
+            escopoAtual.inserir("Curso", valorItem);
+        }
+
+        return null;
+    }
+
+    @Override
+    public Void visitInstituicao(CurriculoParser.InstituicaoContext ctx)
+    {
+        String valorItem = ctx.CADEIA().getText();
+
+        if(valorItem.startsWith("\"") && valorItem.endsWith("\""))
+        {
+            valorItem = valorItem.substring(1, valorItem.length() - 1);
+        }
+
+        TabelaDeSimbolos escopoAtual = escopos.obterEscopoAtual();
+        EntradaTabelaDeSimbolos entrada = escopoAtual.verificar("Instituicao");
+
+        if(entrada != null)
+        {
+            throw new RuntimeException("Erro semântico: Instituicao já foi informada.");
+        }
+        else
+        {
+            escopoAtual.inserir("Instituicao", valorItem);
+        }
+
+        return null;
+    }
+
+    @Override
+    public Void visitDescricao(CurriculoParser.DescricaoContext ctx)
+    {
+        String valorItem = ctx.CADEIA().getText();
+
+        if(valorItem.startsWith("\"") && valorItem.endsWith("\""))
+        {
+            valorItem = valorItem.substring(1, valorItem.length() - 1);
+        }
+
+        TabelaDeSimbolos escopoAtual = escopos.obterEscopoAtual();
+        EntradaTabelaDeSimbolos entrada = escopoAtual.verificar("Descricao");
+
+        if(entrada != null)
+        {
+            throw new RuntimeException("Erro semântico: Descricao já foi informada.");
+        }
+        else
+        {
+            escopoAtual.inserir("Descricao", valorItem);
+        }
+
+        return null;
+    }
+
+    @Override
+    public Void visitPeriodo(CurriculoParser.PeriodoContext ctx)
+    {
+        String dataInicio = ctx.timestamp().MESANO(0).getText();
+        String dataFinal = ctx.timestamp().MESANO(1).getText();
 
         if(!Validator.isValidPeriodo(dataInicio, dataFinal))
         {
             throw new RuntimeException("Erro semântico: Período de " + dataInicio + " a " + dataFinal + " não é válido.");
         }
+
+        TabelaDeSimbolos escopoAtual = escopos.obterEscopoAtual();
+        EntradaTabelaDeSimbolos entrada = escopoAtual.verificar("Periodo");
+
+        if(entrada != null)
+        {
+            throw new RuntimeException("Erro semântico: Período já foi informado.");
+        }
+        else
+        {
+            String valorItem = ctx.timestamp().getText();
+            escopoAtual.inserir("Periodo", valorItem);
+        }
+
+        return null;
+    }
+
+    @Override
+    public Void visitExperiencia(CurriculoParser.ExperienciaContext ctx)
+    {
+        visitListaExp(ctx.listaExp());
+
+        return null;
+    }
+
+    @Override
+    public Void visitListaExp(CurriculoParser.ListaExpContext ctx)
+    {
+        for(CurriculoParser.CampoExpContext campoExpContext : ctx.campoExp())
+        {
+            escopos.criarNovoEscopo();
+            visitCampoExp(campoExpContext);
+            escopos.abandonarEscopo();
+        }
+
+        return null;
+    }
+
+    @Override
+    public Void visitCampoExp(CurriculoParser.CampoExpContext ctx)
+    {
+        for(CurriculoParser.ItemExpContext itemExpContext : ctx.itemExp())
+        {
+            visitItemExp(itemExpContext);
+        }
+
+        return null;
+    }
+
+    @Override
+    public Void visitItemExp(CurriculoParser.ItemExpContext ctx)
+    {
+        if(ctx.empresa() != null)
+        {
+            visitEmpresa(ctx.empresa());
+        }
+        else if(ctx.cargo() != null)
+        {
+            visitCargo(ctx.cargo());
+        }
+        else if(ctx.periodo() != null)
+        {
+            visitPeriodo(ctx.periodo());
+        }
+        else if(ctx.descricao() != null)
+        {
+            visitDescricao(ctx.descricao());
+        }
+
+        return null;
+    }
+
+    @Override
+    public Void visitEmpresa(CurriculoParser.EmpresaContext ctx)
+    {
+        String valorItem = ctx.CADEIA().getText();
+
+        if(valorItem.startsWith("\"") && valorItem.endsWith("\""))
+        {
+            valorItem = valorItem.substring(1, valorItem.length() - 1);
+        }
+
+        TabelaDeSimbolos escopoAtual = escopos.obterEscopoAtual();
+        EntradaTabelaDeSimbolos entrada = escopoAtual.verificar("Empresa");
+
+        if(entrada != null)
+        {
+            throw new RuntimeException("Erro semântico: Empresa já foi informada.");
+        }
+        else
+        {
+            escopoAtual.inserir("Empresa", valorItem);
+        }
+
+        return null;  
+    }
+
+    @Override
+    public Void visitCargo(CurriculoParser.CargoContext ctx)
+    {
+        String valorItem = ctx.CADEIA().getText();
+
+        if(valorItem.startsWith("\"") && valorItem.endsWith("\""))
+        {
+            valorItem = valorItem.substring(1, valorItem.length() - 1);
+        }
+
+        TabelaDeSimbolos escopoAtual = escopos.obterEscopoAtual();
+        EntradaTabelaDeSimbolos entrada = escopoAtual.verificar("Cargo");
+
+        if(entrada != null)
+        {
+            throw new RuntimeException("Erro semântico: Cargo já foi informado.");
+        }
+        else
+        {
+            escopoAtual.inserir("Cargo", valorItem);
+        }
+
+        return null; 
+    }
+
+    @Override
+    public Void visitHabilidades(CurriculoParser.HabilidadesContext ctx)
+    {
+        escopos.criarNovoEscopo();
+        visitListaHab(ctx.listaHab());
+        escopos.abandonarEscopo();
+
+        return null;    
+    }
+
+    @Override
+    public Void visitListaHab(CurriculoParser.ListaHabContext ctx)
+    {
+        for(CurriculoParser.CampoHabContext campoHabContext : ctx.campoHab())
+        {
+            visitCampoHab(campoHabContext);
+        }
+
+        return null;
+    }
+
+    @Override
+    public Void visitCampoHab(CurriculoParser.CampoHabContext ctx)
+    {
+        String valorItem = ctx.CADEIA().getText();
+
+        if(valorItem.startsWith("\"") && valorItem.endsWith("\""))
+        {
+            valorItem = valorItem.substring(1, valorItem.length() - 1);
+        }
+
+        TabelaDeSimbolos escopoAtual = escopos.obterEscopoAtual();
+        EntradaTabelaDeSimbolos entrada = escopoAtual.verificar(valorItem);
+
+        if(entrada != null)
+        {
+            throw new RuntimeException("Erro semântico: Habilidade \"" + valorItem + "\" já foi informada.");
+        }
+        else
+        {
+            escopoAtual.inserir(valorItem, valorItem);
+        }
+
+        return null;
+    }
+
+    @Override
+    public Void visitIdiomas(CurriculoParser.IdiomasContext ctx)
+    {
+        escopos.criarNovoEscopo();
+        visitListaIdiomas(ctx.listaIdiomas());
+        escopos.abandonarEscopo();
+
+        return null;
+    }
+
+    @Override
+    public Void visitListaIdiomas(CurriculoParser.ListaIdiomasContext ctx)
+    {
+        for(CurriculoParser.CampoIdiomaContext campoIdiomaContext : ctx.campoIdioma())
+        {
+            visitCampoIdioma(campoIdiomaContext);
+        }
+
+        return null;
+    }
+
+    @Override
+    public Void visitCampoIdioma(CurriculoParser.CampoIdiomaContext ctx)
+    {
+        String valorItem = ctx.CADEIA().getText();
+
+        if(valorItem.startsWith("\"") && valorItem.endsWith("\""))
+        {
+            valorItem = valorItem.substring(1, valorItem.length() - 1);
+        }
+
+        TabelaDeSimbolos escopoAtual = escopos.obterEscopoAtual();
+        EntradaTabelaDeSimbolos entrada = escopoAtual.verificar(valorItem);
+
+        if(entrada != null)
+        {
+            throw new RuntimeException("Erro semântico: Idioma \"" + valorItem + "\" já foi informado.");
+        }
+        else
+        {
+            escopoAtual.inserir(valorItem, valorItem);
+        }
+
+        return null; 
     }
 }

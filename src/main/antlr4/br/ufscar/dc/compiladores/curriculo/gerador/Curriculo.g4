@@ -6,6 +6,11 @@ PALAVRA_CHAVE
 
 CADEIA: '"' ~('\n' | '"')* '"';
 
+MESANO: MES '/' ANO;
+
+fragment MES: 'Jan' | 'Fev' | 'Mar' | 'Abr' | 'Mai' | 'Jun' | 'Jul' | 'Ago' | 'Set' | 'Out' | 'Nov' | 'Dez';
+fragment ANO: [0-9][0-9];
+
 //Tokens ignorados
 IGNORADO: (WS | TAB | QUEBRA_LINHA | COMENTARIO) -> skip;
 fragment WS: ' ';
@@ -35,33 +40,30 @@ educacao: 'EDUCACAO' ':' listaEduc;
 
 listaEduc: campoEduc+;
 
-campoEduc: '-' itemEduc+
+campoEduc: '-' itemEduc+;
 
 itemEduc
 	: curso
 	| instituicao
-	| periodo
-	| descricao
-	;
+    | periodo
+    | descricao
+    ;
 
 curso: 'Curso' ':' CADEIA;
 
 instituicao: 'Instituicao' ':' CADEIA;
 
-periodo: 'Periodo' ':' '(' dataInicio=mesAno '-' dataFinal=mesAno')';
+periodo: 'Periodo' ':' timestamp;
 
-mesAno: MES '/' ANO;
+descricao: 'Descricao' ':' CADEIA;
 
-fragment MES: 'Jan' | 'Fev' | 'Mar' | 'Abr' | 'Mai' | 'Jun' | 'Jul' | 'Ago' | 'Set' | 'Out' | 'Nov' | 'Dez';
-fragment ANO: [0-9]{2};
-
-descricao: 'Descricao' ':' CADEIA; 
+timestamp: '(' MESANO '-' MESANO')';
 
 experiencia: 'EXPERIENCIA' ':' listaExp;
 
-listaExp: campoExp*;
+listaExp: campoExp+;
 
-campoExp: '-' itemExp+
+campoExp: '-' itemExp+;
 
 itemExp
 	: empresa
@@ -75,12 +77,12 @@ cargo: 'Cargo' ':' CADEIA;
 
 habilidades: 'HABILIDADES' ':' listaHab;
 
-listaHab: itemHab*;
+listaHab: campoHab+;
 
-itemHab: '-' CADEIA;
+campoHab: '-' CADEIA;
 
 idiomas: 'IDIOMAS' ':' listaIdiomas;
 
-listaIdiomas: itemIdioma*;
+listaIdiomas: campoIdioma+;
 
-itemIdioma: '-' CADEIA;
+campoIdioma: '-' CADEIA;

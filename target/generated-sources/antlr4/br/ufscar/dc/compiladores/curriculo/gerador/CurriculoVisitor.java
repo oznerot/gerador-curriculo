@@ -47,6 +47,12 @@ public interface CurriculoVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitListaEduc(CurriculoParser.ListaEducContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link CurriculoParser#campoEduc}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCampoEduc(CurriculoParser.CampoEducContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link CurriculoParser#itemEduc}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -77,6 +83,12 @@ public interface CurriculoVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDescricao(CurriculoParser.DescricaoContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link CurriculoParser#timestamp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTimestamp(CurriculoParser.TimestampContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link CurriculoParser#experiencia}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -88,6 +100,12 @@ public interface CurriculoVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitListaExp(CurriculoParser.ListaExpContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CurriculoParser#campoExp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCampoExp(CurriculoParser.CampoExpContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CurriculoParser#itemExp}.
 	 * @param ctx the parse tree
@@ -119,11 +137,11 @@ public interface CurriculoVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitListaHab(CurriculoParser.ListaHabContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CurriculoParser#itemHab}.
+	 * Visit a parse tree produced by {@link CurriculoParser#campoHab}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitItemHab(CurriculoParser.ItemHabContext ctx);
+	T visitCampoHab(CurriculoParser.CampoHabContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CurriculoParser#idiomas}.
 	 * @param ctx the parse tree
@@ -137,9 +155,9 @@ public interface CurriculoVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitListaIdiomas(CurriculoParser.ListaIdiomasContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CurriculoParser#itemIdioma}.
+	 * Visit a parse tree produced by {@link CurriculoParser#campoIdioma}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitItemIdioma(CurriculoParser.ItemIdiomaContext ctx);
+	T visitCampoIdioma(CurriculoParser.CampoIdiomaContext ctx);
 }

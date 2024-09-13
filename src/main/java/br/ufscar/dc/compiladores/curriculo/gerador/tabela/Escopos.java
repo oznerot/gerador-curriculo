@@ -1,5 +1,8 @@
 package br.ufscar.dc.compiladores.curriculo.gerador.tabela;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Escopos
 {
     private LinkedList<TabelaDeSimbolos> pilhaDeTabelas;
